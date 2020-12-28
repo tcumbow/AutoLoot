@@ -5,6 +5,9 @@ local ADDON_AUTHOR = "Tom Cumbow"
 local lpc = LibPixelControl
 local Press = LibPixelControl.SetIndOnFor
 
+local LastTarget
+local LastAction
+
 local function InventoryFull()
 	if GetNumBagUsedSlots(BAG_BACKPACK) == GetBagSize(BAG_BACKPACK) then
 		return true
@@ -20,6 +23,14 @@ local function OnEventInteractableTargetChanged()
 	-- d(blocked)
 	-- d(mystery2)
 	-- d(additionalInfo)
+
+	if action==LastAction or target==LastTarget then
+		return
+	end
+
+	LastAction = action
+	LastTarget = target
+
 	if 	not blocked
 		and additionalInfo~=2
 		and not IsMounted()
