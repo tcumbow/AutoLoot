@@ -1,5 +1,12 @@
 {
     "cSpell.words": [
         "Interactable"
-    ]
+    ],
+    "emeraldwalk.runonsave": {
+        "commands": [
+            {
+                "cmd": "robocopy .\\AutoLoot A:\\AutoLoot /mir"
+            }
+        ]
+    }
 }
