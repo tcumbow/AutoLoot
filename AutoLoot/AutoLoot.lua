@@ -1,6 +1,7 @@
 local ADDON_NAME = "AutoLoot"
 local ADDON_VERSION = "1.0"
 local ADDON_AUTHOR = "Tom Cumbow"
+TFC_AUTOLOOT_LOADED = true
 
 local lpc = LibPixelControl
 local Press = LibPixelControl.SetIndOnFor
