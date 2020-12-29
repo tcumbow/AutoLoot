@@ -8,5 +8,17 @@
                 "cmd": "robocopy .\\AutoLoot A:\\AutoLoot /mir"
             }
         ]
-    }
+    },
+    "Lua.diagnostics.globals": [
+        "IsMounted",
+        "GetGameCameraInteractableActionInfo",
+        "LibPixelControl",
+        "EVENT_ADD_ON_LOADED",
+        "EVENT_MANAGER",
+        "GetNumBagUsedSlots",
+        "BAG_BACKPACK",
+        "GetBagSize",
+        "ZO_PreHookHandler",
+        "RETICLE"
+    ]
 }
