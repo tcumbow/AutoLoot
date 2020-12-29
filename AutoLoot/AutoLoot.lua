@@ -25,16 +25,14 @@ local function OnEventInteractableTargetChanged()
 	-- d(mystery2)
 	-- d(additionalInfo)
 
-	if action==LastAction or target==LastTarget then
+	if (blocked or additionalInfo==2) or (action==LastAction and target==LastTarget) then
 		return
 	end
 
 	LastAction = action
 	LastTarget = target
 
-	if 	not blocked
-		and additionalInfo~=2
-		and not IsMounted()
+	if 	not IsMounted()
 		and not IsReticleHidden()
 		and not IsUnitDead("player")
 		and
