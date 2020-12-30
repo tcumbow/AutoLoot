@@ -18,11 +18,11 @@ local function InventoryFull()
 end
 
 local function OnEventInteractableTargetChanged()
-	local action, target, blocked, mystery2, additionalInfo = GetGameCameraInteractableActionInfo()
+	local action, target, blocked, mysteryParm, additionalInfo = GetGameCameraInteractableActionInfo()
 	-- d(action)
 	-- d(interactableName)
 	-- d(blocked)
-	-- d(mystery2)
+	-- d(mysteryParm)
 	-- d(additionalInfo)
 
 	if blocked or additionalInfo==2 or IsMounted() or (action==LastAction and target==LastTarget) then
