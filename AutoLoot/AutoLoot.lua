@@ -33,7 +33,7 @@ local function OnEventInteractableTargetChanged()
 	LastTarget = target
 
 	if 	(
-			(action=="Search" and not InventoryFull() and target~="Book Stack" and target~="Bookshelf")
+			(action=="Search" and target~="Book Stack" and target~="Bookshelf")
 			or action=="Disarm"
 			or action=="Destroy"
 			or action=="Cut"
@@ -42,21 +42,10 @@ local function OnEventInteractableTargetChanged()
 			or action=="Loot"
 			or (action=="Take" and not (target=="Spoiled Food" or target=="Greatsword" or target=="Sword" or target=="Axe" or target=="Bow" or target=="Shield" or target=="Staff" or target=="Sabatons" or target=="Jerkin" or target=="Dagger" or target=="Cuirass" or target=="Pauldron" or target=="Helm" or target=="Gauntlets" or target=="Guards" or target=="Boots" or target=="Shoes"))
 			or (action=="Use" and (target=="Chest" or target=="Treasure Chest" or target=="Giant Clam" or target=="Skyshard"))
-		)
-	
+		) and not InventoryFull()
 	then
 		Press(lpc.VK_E,50)
 	end
-	
-
-
-
-		-- elseif action=="Disarm" then
-		-- 	Press(lpc.VK_E,50)
-		-- elseif  then
-		-- 	Press(lpc.VK_E,50)
-
-
 end
 
 local function OnAddonLoaded(event, name)
