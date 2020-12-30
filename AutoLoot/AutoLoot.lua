@@ -17,6 +17,20 @@ local function InventoryFull()
 	end
 end
 
+local function PreventStealing()
+	SetSetting(SETTING_TYPE_LOOT, LOOT_SETTING_PREVENT_STEALING_PLACED, 1)
+end
+local function AllowStealing()
+	SetSetting(SETTING_TYPE_LOOT, LOOT_SETTING_PREVENT_STEALING_PLACED, 0)
+end
+local function OnEventStealthChange(_,_,stealthState)
+	if stealthState > 0 then
+		AllowStealing()
+	else
+		PreventStealing()
+	end
+end
+
 local function OnEventInteractableTargetChanged()
 	local action, target, blocked, mysteryParm, additionalInfo = GetGameCameraInteractableActionInfo()
 	-- d(action)
@@ -53,6 +67,8 @@ local function OnAddonLoaded(event, name)
 		EVENT_MANAGER:UnregisterForEvent(ADDON_NAME, event)
 		ZO_PreHookHandler(RETICLE.interact, "OnEffectivelyShown", OnEventInteractableTargetChanged)
 		ZO_PreHookHandler(RETICLE.interact, "OnHide", OnEventInteractableTargetChanged)
+		EVENT_MANAGER:RegisterForEvent(ADDON_NAME, EVENT_STEALTH_STATE_CHANGED, OnEventStealthChange)
+		PreventStealing()
 	end
 end
 
