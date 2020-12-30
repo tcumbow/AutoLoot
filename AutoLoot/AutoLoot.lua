@@ -34,6 +34,7 @@ local function OnEventInteractableTargetChanged()
 
 	if 	(
 			(action=="Search" and not InventoryFull() and target~="Book Stack" and target~="Bookshelf")
+			or action=="Disarm"
 			or action=="Destroy"
 			or action=="Cut"
 			or action=="Mine"
