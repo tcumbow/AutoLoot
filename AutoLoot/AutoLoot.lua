@@ -66,7 +66,6 @@ local function OnAddonLoaded(event, name)
 	if name == ADDON_NAME then
 		EVENT_MANAGER:UnregisterForEvent(ADDON_NAME, event)
 		ZO_PreHookHandler(RETICLE.interact, "OnEffectivelyShown", OnEventInteractableTargetChanged)
-		ZO_PreHookHandler(RETICLE.interact, "OnHide", OnEventInteractableTargetChanged)
 		EVENT_MANAGER:RegisterForEvent(ADDON_NAME, EVENT_STEALTH_STATE_CHANGED, OnEventStealthChange)
 		PreventStealing()
 	end
