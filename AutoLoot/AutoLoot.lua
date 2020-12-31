@@ -54,7 +54,7 @@ local function OnEventInteractableTargetChanged()
 			or action=="Mine"
 			or action=="Collect"
 			or action=="Loot"
-			or (action=="Take" and not (target=="Spoiled Food" or target=="Greatsword" or target=="Sword" or target=="Axe" or target=="Bow" or target=="Shield" or target=="Staff" or target=="Sabatons" or target=="Jerkin" or target=="Dagger" or target=="Cuirass" or target=="Pauldron" or target=="Helm" or target=="Gauntlets" or target=="Guards" or target=="Boots" or target=="Shoes"))
+			or (action=="Take" and not (target=="Spoiled Food" or target=="Greatsword" or target=="Sword" or target=="Axe" or target=="Bow" or target=="Shield" or target=="Staff" or target=="Sabatons" or target=="Jerkin" or target=="Dagger" or target=="Cuirass" or target=="Pauldron" or target=="Helm" or target=="Gauntlets" or target=="Guards" or target=="Boots" or target=="Shoes" or target=="Jack"))
 			or (action=="Use" and (target=="Chest" or target=="Treasure Chest" or target=="Giant Clam" or target=="Skyshard"))
 		) and not InventoryFull()
 	then
