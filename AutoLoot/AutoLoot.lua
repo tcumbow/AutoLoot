@@ -4,7 +4,6 @@ local ADDON_AUTHOR = "Tom Cumbow"
 TFC_AUTOLOOT_LOADED = true
 
 local lpc = LibPixelControl
-local Press = LibPixelControl.SetIndOnFor
 
 local LastTarget
 local LastAction

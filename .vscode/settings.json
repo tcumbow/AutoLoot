@@ -23,6 +23,7 @@
         "EVENT_STEALTH_STATE_CHANGED",
         "SetSetting",
         "SETTING_TYPE_LOOT",
-        "LOOT_SETTING_PREVENT_STEALING_PLACED"
+        "LOOT_SETTING_PREVENT_STEALING_PLACED",
+        "zo_callLater"
     ]
 }
