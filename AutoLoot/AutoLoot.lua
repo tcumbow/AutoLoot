@@ -47,8 +47,7 @@ local function OnEventInteractableTargetChanged()
 	LastTarget = target
 
 	if 	(
-			(action=="Search" and target~="Book Stack" and target~="Bookshelf")
-			or action=="Disarm"
+			action=="Disarm"
 			or action=="Destroy"
 			or action=="Cut"
 			or action=="Mine"
@@ -58,7 +57,8 @@ local function OnEventInteractableTargetChanged()
 			or (action=="Use" and (target=="Chest" or target=="Treasure Chest" or target=="Giant Clam" or target=="Skyshard"))
 		) and not InventoryFull()
 	then
-		Press(lpc.VK_E,50)
+		LibPixelControl.SetIndOnFor(lpc.VK_E,50)
+	elseif (action=="Search" and target~="Book Stack" and target~="Bookshelf") then zo_callLater(function() LibPixelControl.SetIndOnFor(lpc.VK_E,50) end,200)
 	end
 end
 
