@@ -39,7 +39,7 @@ local function OnEventInteractableTargetChanged()
 	-- d(mysteryParm)
 	-- d(additionalInfo)
 
-	if IsUnitInCombat('player') or blocked or additionalInfo==2 or IsMounted() then
+	if blocked or additionalInfo==2 or IsMounted() then
 		return
 	end
 
