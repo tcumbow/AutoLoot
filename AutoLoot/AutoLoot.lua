@@ -6,9 +6,6 @@ TFC_AUTOLOOT_LOADED = true
 local lpc = LibPixelControl
 local Press = LibPixelControl.SetIndOnFor
 
-local LastTarget
-local LastAction
-
 local function InventoryFull()
 	if GetNumBagUsedSlots(BAG_BACKPACK) == GetBagSize(BAG_BACKPACK) then
 		return true
@@ -42,9 +39,6 @@ local function OnEventInteractableTargetChanged()
 	if blocked or additionalInfo==2 or IsMounted() then
 		return
 	end
-
-	LastAction = action
-	LastTarget = target
 
 	if 	(
 			(action=="Search" and target~="Book Stack" and target~="Bookshelf" and target~="Heavy Sack")
