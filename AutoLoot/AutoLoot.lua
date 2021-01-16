@@ -28,6 +28,10 @@ local function OnEventStealthChange(_,_,stealthState)
 	end
 end
 
+local function LootNow()
+	Press(lpc.VK_E,50)
+end
+
 local function OnEventInteractableTargetChanged()
 	local action, target, blocked, mysteryParm, additionalInfo = GetGameCameraInteractableActionInfo()
 	-- d(action)
@@ -36,13 +40,21 @@ local function OnEventInteractableTargetChanged()
 	-- d(mysteryParm)
 	-- d(additionalInfo)
 
-	if blocked or additionalInfo==2 or IsMounted() then
+	if blocked or additionalInfo==2 or IsMounted() or InventoryFull() then
 		return
 	end
 
 	if 	(
 			(action=="Search" and target~="Book Stack" and target~="Bookshelf" and target~="Heavy Sack")
-			or action=="Disarm"
+		)
+	then
+		if IsPlayerMoving() then
+			zo_callLater(LootNow,100)
+		else
+			LootNow()
+		end
+	elseif 	(
+			action=="Disarm"
 			or action=="Destroy"
 			or action=="Cut"
 			or action=="Mine"
@@ -50,10 +62,11 @@ local function OnEventInteractableTargetChanged()
 			or action=="Loot"
 			or (action=="Take" and not (target=="Doshia's Journal" or target=="Spoiled Food" or target=="Greatsword" or target=="Sword" or target=="Axe" or target=="Bow" or target=="Shield" or target=="Staff" or target=="Sabatons" or target=="Jerkin" or target=="Dagger" or target=="Cuirass" or target=="Pauldron" or target=="Helm" or target=="Gauntlets" or target=="Guards" or target=="Boots" or target=="Shoes" or target=="Jack"))
 			--or (action=="Use" and (target=="Chest" or target=="Treasure Chest" or target=="Giant Clam" or target=="Skyshard"))
-		) and not InventoryFull()
+		)
 	then
-		Press(lpc.VK_E,50)
+		LootNow()
 	end
+
 end
 
 local function OnAddonLoaded(event, name)
