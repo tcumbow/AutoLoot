@@ -6,6 +6,18 @@ TFC_AUTOLOOT_LOADED = true
 local lpc = LibPixelControl
 local Press = LibPixelControl.SetIndOnFor
 
+local function ActiveCompanionName()
+	return ZO_CachedStrFormat("<<C:1>>",GetCompanionName(GetActiveCompanionDefId()))
+end
+
+local function MirriIsHere()
+	return ActiveCompanionName()=="Mirri Elendis"
+end
+
+local function BastionIsHere()
+	return ActiveCompanionName()=="Bastian Hallix"
+end
+
 local function InventoryFull()
 	if GetNumBagUsedSlots(BAG_BACKPACK) == GetBagSize(BAG_BACKPACK) then
 		return true
@@ -60,7 +72,7 @@ local function OnEventInteractableTargetChanged()
 			or action=="Mine"
 			or action=="Collect"
 			or action=="Loot"
-			or (action=="Take" and not (target=="Doshia's Journal" or target=="Spoiled Food" or target=="Greatsword" or target=="Sword" or target=="Axe" or target=="Bow" or target=="Shield" or target=="Staff" or target=="Sabatons" or target=="Jerkin" or target=="Dagger" or target=="Cuirass" or target=="Pauldron" or target=="Helm" or target=="Gauntlets" or target=="Guards" or target=="Boots" or target=="Shoes" or target=="Jack"))
+			or (action=="Take" and not (target=="Doshia's Journal" or target=="Spoiled Food" or target=="Greatsword" or target=="Sword" or target=="Axe" or target=="Bow" or target=="Shield" or target=="Staff" or target=="Sabatons" or target=="Jerkin" or target=="Dagger" or target=="Cuirass" or target=="Pauldron" or target=="Helm" or target=="Gauntlets" or target=="Guards" or target=="Boots" or target=="Shoes" or target=="Jack" or (MirriIsHere() and (target=="Butterfly" or target=="Torchbug"))))
 			--or (action=="Use" and (target=="Chest" or target=="Treasure Chest" or target=="Giant Clam" or target=="Skyshard"))
 		)
 	then
